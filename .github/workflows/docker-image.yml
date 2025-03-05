@@ -25,7 +25,7 @@ jobs:
       - name: Build Docker Image
         run: docker build -t vaibhavrawat/simple-js-app:build-${GITHUB_RUN_NUMBER} .
       - name: Push Docker Image
-        run: docker push vaibhavrawat/simple-js-app
+        run: docker push vaibhavrawat/simple-js-app:build-${GITHUB_RUN_NUMBER}
   connect-and-run:
     name: Deploy to EC2
     runs-on: ubuntu-latest
