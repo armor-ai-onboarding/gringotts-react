@@ -2,7 +2,7 @@ name: CareDocs application
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-push:
