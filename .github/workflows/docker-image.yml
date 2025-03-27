@@ -23,7 +23,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build Docker Image
-        run: docker build -t vaibhavrawat/simple-js-app:build-${GITHUB_RUN_NUMBER} .
+        run: docker build -t rupeshcash/simple-js-app:build-${GITHUB_RUN_NUMBER} .
       - name: Install and run trivy
         run: >
           curl -sfL
@@ -32,9 +32,9 @@ jobs:
 
           trivy --version
 
-          trivy image vaibhavrawat/simple-js-app:build-${GITHUB_RUN_NUMBER}
+          trivy image rupeshcash/simple-js-app:build-${GITHUB_RUN_NUMBER}
       - name: Push Docker Image
-        run: docker push vaibhavrawat/simple-js-app:build-${GITHUB_RUN_NUMBER}
+        run: docker push rupeshcash/simple-js-app:build-${GITHUB_RUN_NUMBER}
   connect-and-run:
     name: Deploy to EC2
     runs-on: ubuntu-latest
@@ -92,9 +92,9 @@ jobs:
 
             # Pull the latest Docker image
 
-            docker pull vaibhavrawat/simple-js-app
+            docker pull rupeshcash/simple-js-app
 
 
             # Run the container (modify ports and env vars if needed)
 
-            docker run -d --name simple-js-app -p 3000:3000 vaibhavrawat/simple-js-app
+            docker run -d --name simple-js-app -p 3000:3000 rupeshcash/simple-js-app
