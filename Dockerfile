@@ -1,23 +1,15 @@
-# FROM node
-# WORKDIR /app
+FROM node:16
 
-# COPY . .
-# EXPOSE 3000
+COPY requirements.txt /tmp/requirements.txt
 
-# COPY package*.json ./
-
-# ENTRYPOINT start npm
-
-FROM node
+RUN apt-get update && \
+    xargs apt-get install -y < /tmp/requirements.txt && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-
-COPY package*.json ./
-
+COPY package.json ./
 RUN npm install
-
 COPY . .
-
 EXPOSE 5173
-
 CMD ["npm", "start"]
