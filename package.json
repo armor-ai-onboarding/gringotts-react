@@ -33,6 +33,9 @@
     "handlebars": "4.7.6",
     "node-static": "0.7.6",
     "tar": "4.4.13",
-    "immer": "9.0.5"
+    "immer": "9.0.5",
+    "qs": "6.5.1",
+    "minimist": "1.2.5",
+    "kind-of": "6.0.2"
   }
 }
