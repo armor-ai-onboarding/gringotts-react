@@ -23,7 +23,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build Docker Image
-        run: docker build -t rupeshkash/gringotts-vue:build-${GITHUB_RUN_NUMBER} .
+        run: docker build -t rupeshkash/gringotts-angular:build-${GITHUB_RUN_NUMBER} .
       - name: Install and run trivy
         run: >
           curl -sfL
@@ -32,7 +32,7 @@ jobs:
 
           trivy --version
 
-          trivy image rupeshkash/gringotts-vue:build-${GITHUB_RUN_NUMBER}
+          trivy image rupeshkash/gringotts-angular:build-${GITHUB_RUN_NUMBER}
       - name: Push Docker Image
         run: docker push armor-ai-onboarding/simple-nodejs-app:build-${GITHUB_RUN_NUMBER}
   connect-and-run:
@@ -85,16 +85,16 @@ jobs:
 
             # Stop and remove any existing container (if running)
 
-            docker stop gringotts-vue || true
+            docker stop gringotts-angular || true
 
-            docker rm gringotts-vue || true
+            docker rm gringotts-angular || true
 
 
             # Pull the latest Docker image
 
-            docker pull rupeshkash/gringotts-vue
+            docker pull rupeshkash/gringotts-angular
 
 
             # Run the container (modify ports and env vars if needed)
 
-            docker run -d --name gringotts-vue -p 3000:3000 rupeshkash/gringotts-vue
+            docker run -d --name gringotts-angular -p 3000:3000 rupeshkash/gringotts-angular
