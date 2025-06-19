@@ -34,7 +34,7 @@ jobs:
 
           trivy image rupeshkash/gringotts-react:build-${GITHUB_RUN_NUMBER}
       - name: Push Docker Image
-        run: docker push armor-ai-onboarding/simple-electronjs-app:build-${GITHUB_RUN_NUMBER}
+        run: docker push armor-ai-onboarding/simple-nodejs-app:build-${GITHUB_RUN_NUMBER}
   connect-and-run:
     name: Deploy to EC2
     runs-on: ubuntu-latest
